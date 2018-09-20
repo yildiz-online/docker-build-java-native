@@ -2,10 +2,9 @@ FROM moussavdb/build-java
 
 LABEL maintainer="Grégory Van den Borre vandenborre.gregory@hotmail.fr"
 
-RUN (apt-get update && apt-get upgrade -y -q && apt-get dist-upgrade -y -q && apt-get -y -q autoclean && apt-get -y -q autoremove)
-RUN apt-get install -y -q build-essential mingw-w64 cmake unzip python3 libxaw7-dev
-#RUN wget https://sonarcloud.io/build-wrapper-linux-x86.zip
-#RUN unzip build-wrapper-linux-x86.zip -d /home
-#RUN cp /home/build-wrapper-linux-x86/* /usr/local/bin
-#RUN rm -R /home/build-wrapper-linux-x86
-#RUN apt-get purge -y -q unzip
+RUN apt-get install -y -q build-essential mingw-w64 cmake unzip python3 libxaw7-dev wget
+RUN wget http://sonarcloud.io/static/cpp/build-wrapper-linux-x86.zip \
+&& unzip build-wrapper-linux-x86.zip -d /home \
+&& cp /home/build-wrapper-linux-x86/* /usr/local/bin \
+&& rm -R /home/build-wrapper-linux-x86 \
+&& apt-get purge -y -q unzip wget
