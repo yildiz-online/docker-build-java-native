@@ -2,7 +2,8 @@ FROM moussavdb/build-java
 
 LABEL maintainer="Grégory Van den Borre vandenborre.gregory@hotmail.fr"
 
-RUN add-apt-repository ppa:ubuntu-toolchain-r/test -y \
+RUN apt-get install -y -q software-properties-common \
+&& add-apt-repository ppa:ubuntu-toolchain-r/test -y \
 && apt-get update \
 && apt-get install -y -q make gcc-8 libc-dev dpkg-dev mingw-w64 cmake unzip python3 libxaw7-dev wget autoconf \
 && wget http://sonarcloud.io/static/cpp/build-wrapper-linux-x86.zip \
