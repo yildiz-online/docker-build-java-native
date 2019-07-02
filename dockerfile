@@ -7,7 +7,7 @@ RUN apt-get install -y -q make gcc g++ libc-dev pkg-config cmake-data dpkg-dev m
 && unzip build-wrapper-linux-x86.zip -d /home \
 && cp /home/build-wrapper-linux-x86/* /usr/local/bin \
 && rm -R /home/build-wrapper-linux-x86 \
-&& apt-get purge -y -q unzip wget
+&& apt-get purge -y -q unzip wget \
 
 && mkdir /build-resources \
 && mkdir /src
