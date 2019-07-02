@@ -2,6 +2,8 @@ FROM moussavdb/build-java
 
 LABEL maintainer="Grégory Van den Borre vandenborre.gregory@hotmail.fr"
 
+RUN echo $PWD
+
 RUN apt-get install -y -q make gcc g++ libc-dev pkg-config cmake-data dpkg-dev mingw-w64 cmake unzip python3 libxaw7-dev libxrandr-dev libgl1-mesa-dev libglu1-mesa-dev wget autoconf \
 && wget http://sonarcloud.io/static/cpp/build-wrapper-linux-x86.zip \
 && unzip build-wrapper-linux-x86.zip -d /home \
