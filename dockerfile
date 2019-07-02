@@ -9,6 +9,9 @@ RUN apt-get install -y -q make gcc g++ libc-dev pkg-config cmake-data dpkg-dev m
 && rm -R /home/build-wrapper-linux-x86 \
 && apt-get purge -y -q unzip wget
 
+&& mkdir /build-resources \
+&& mkdir /src
+
 COPY deploy-native-maven-central.sh build-resources
 
 RUN chmod 777 /build-resources/deploy-native-maven-central.sh
