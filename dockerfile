@@ -10,7 +10,7 @@ RUN apt-get install -y -q git make gcc g++ libc-dev pkg-config cmake-data dpkg-d
 && apt-get purge -y -q unzip wget \
 && mkdir raspberry \
 && cd raspberry \
-&& git clone https://github.com/rapsberrypi/tools
+&& git clone https://github.com/rapsberrypi/tools \
 && cd ..
 
 COPY /deploy-native-maven-central.sh /build-resources
