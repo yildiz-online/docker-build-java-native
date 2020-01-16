@@ -7,7 +7,11 @@ RUN apt-get install -y -q git make gcc g++ libc-dev pkg-config cmake-data dpkg-d
 && unzip build-wrapper-linux-x86.zip -d /home \
 && cp /home/build-wrapper-linux-x86/* /usr/local/bin \
 && rm -R /home/build-wrapper-linux-x86 \
-&& apt-get purge -y -q unzip wget
+&& apt-get purge -y -q unzip wget \
+&& mkdir raspberry \
+&& cd raspberry \
+&& git clone https://github.com/rapsberrypi/tools
+&& cd ..
 
 COPY /deploy-native-maven-central.sh /build-resources
 
