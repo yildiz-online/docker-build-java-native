@@ -1,16 +1,16 @@
-sudo: required
-
 language: generic
 
-services:
-  - docker
+git:
+  depth: false
+
+os: linux
+dist: jammy
 
 before_install:
-  - docker build -t moussavdb/build-java-native:latest -t moussavdb/build-java-native:build_$TRAVIS_BUILD_NUMBER .
+  - docker build -t moussavdb/build-java-native:latest .
 script:
   - docker images moussavdb/build-java-native
   
 after_success:
   - docker login -u="moussavdb" -p="$DOCKER_PASSWORD";
     docker push moussavdb/build-java-native:latest;
-    docker push moussavdb/build-java-native:build_$TRAVIS_BUILD_NUMBER;
