@@ -14,6 +14,6 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 COPY /deploy-native-maven-central.sh /build-resources
 
-RUN chmod 777 /build-resources/deploy-maven-central.sh
+RUN chmod 777 /build-resources/deploy-native-maven-central.sh
 
-ENTRYPOINT ../build-resources/deploy-maven-central.sh
+ENTRYPOINT ../build-resources/deploy-native-maven-central.sh
