@@ -14,6 +14,6 @@ RUN apt-get install -y -q --fix-missing git make gcc g++ libc-dev pkg-config cma
 
 COPY /deploy-native-maven-central.sh /build-resources
 
-RUN chmod 777 /build-resources/deploy-native-maven-central.sh
+RUN chmod 777 /build-resources/deploy-maven-central.sh
 
-ENTRYPOINT ../build-resources/deploy-native-maven-central.sh
+ENTRYPOINT ../build-resources/deploy-maven-central.sh
