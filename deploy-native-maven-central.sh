@@ -8,9 +8,13 @@ generate_post_data()
 EOF
 }
 
+echo "1"
 RESPONSE=$(curl --connect-timeout 10 --max-time 15 -sS -X POST --data "$(generate_post_data)" https://vault.yildiz-games.be/v1/auth/github/login)
+echo "1"
 TOKEN=$(echo ${RESPONSE} | jq -r '.auth.client_token')
+echo "1"
 SECRETS=$(curl -sS -H "X-Vault-Token: $TOKEN" -X GET https://vault.yildiz-games.be/v1/kv/yildiz-engine)
+echo "1"
 
 #Some variables need to be exported as env variable to be used by external processes.
 
