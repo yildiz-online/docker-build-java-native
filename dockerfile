@@ -14,8 +14,6 @@ LABEL maintainer="Grégory Van den Borre vandenborre.gregory@hotmail.fr"
 
 COPY /deploy-native-maven-central.sh /build-resources
 
-RUN chmod 777 /build-resources/deploy-native-maven-central.sh
-
-RUN curl -v -sS -H "X-Vault-Token: $TOKEN" -X GET https://www.google.com
+RUN chmod +x /build-resources/deploy-native-maven-central.sh
 
 ENTRYPOINT ../build-resources/deploy-native-maven-central.sh
