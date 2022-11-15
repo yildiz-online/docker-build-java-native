@@ -1,6 +1,8 @@
 #!/bin/bash
 
-curl -v -sS -H "X-Vault-Token: $TOKEN" -X GET https://www.google.com
+nslookup google.com
+
+cat /etc/resolv.conf
 
 #To create the quotes properly.
 generate_post_data()
