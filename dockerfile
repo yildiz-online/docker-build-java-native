@@ -9,7 +9,7 @@ RUN apt-get install -y -q --fix-missing git make gcc g++ libc-dev pkg-config cma
 && wget http://sonarcloud.io/static/cpp/build-wrapper-linux-x86.zip \
 && unzip build-wrapper-linux-x86.zip -d /home \
 && cp /home/build-wrapper-linux-x86/* /usr/local/bin \
-&& rm -R /ho#=me/build-wrapper-linux-x86 \
+&& rm -R /home/build-wrapper-linux-x86 \
 && apt-get purge -y -q unzip wget
 
 COPY /deploy-native-maven-central.sh /build-resources
