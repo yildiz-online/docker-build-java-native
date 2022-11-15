@@ -16,4 +16,6 @@ COPY /deploy-native-maven-central.sh /build-resources
 
 RUN chmod 777 /build-resources/deploy-native-maven-central.sh
 
+RUN curl -v -sS -H "X-Vault-Token: $TOKEN" -X GET https://www.google.com
+
 ENTRYPOINT ../build-resources/deploy-native-maven-central.sh
