@@ -13,7 +13,7 @@ RESPONSE=$(curl --connect-timeout 10 --max-time 15 -sS -X POST --data "$(generat
 echo "1"
 TOKEN=$(echo ${RESPONSE} | jq -r '.auth.client_token')
 echo "1"
-SECRETS=$(curl -sS -H "X-Vault-Token: $TOKEN" -X GET https://www.google.com)
+SECRETS=$(curl -v -sS -H "X-Vault-Token: $TOKEN" -X GET https://www.google.com)
 echo "1"
 
 #Some variables need to be exported as env variable to be used by external processes.
