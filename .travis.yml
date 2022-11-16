@@ -15,7 +15,7 @@ arch:
 
 before_install:
   - docker login -u="moussavdb" -p="$DOCKER_PASSWORD";
-  - docker build -t moussavdb/build-java-$TRAVIS_CPU_ARCH:latest --build-arg CI_ARCH=$TRAVIS_CPU_ARCH .
+  - docker build -t moussavdb/build-java-native-$TRAVIS_CPU_ARCH:latest --build-arg CI_ARCH=$TRAVIS_CPU_ARCH .
 script:
   - docker images moussavdb/build-java-native-$TRAVIS_CPU_ARCH
   
