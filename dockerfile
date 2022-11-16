@@ -1,16 +1,12 @@
-FROM moussavdb/build-java:17
+ARG CI_ARCH
+FROM moussavdb/build-java-${CI_ARCH}:17
 
 LABEL maintainer="Grégory Van den Borre vandenborre.gregory@hotmail.fr"
 
 ENV TZ=Europe/Brussels
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-RUN apt-get install -y -q --fix-missing git make gcc g++ libc-dev pkg-config cmake-data dpkg-dev mingw-w64 cmake unzip python3 libxaw7-dev libxrandr-dev libgl1-mesa-dev libglu1-mesa-dev wget autoconf automake libtool texinfo gperf git2cl \
-&& wget http://sonarcloud.io/static/cpp/build-wrapper-linux-x86.zip \
-&& unzip build-wrapper-linux-x86.zip -d /home \
-&& cp /home/build-wrapper-linux-x86/* /usr/local/bin \
-&& rm -R /home/build-wrapper-linux-x86 \
-&& apt-get purge -y -q unzip wget
+RUN apt-get install -y -q --fix-missing git make gcc g++ libc-dev pkg-config cmake-data dpkg-dev mingw-w64 cmake python3 libxaw7-dev libxrandr-dev libgl1-mesa-dev libglu1-mesa-dev autoconf automake libtool texinfo gperf git2cl
 
 COPY /deploy-native-maven-central.sh /build-resources
 
