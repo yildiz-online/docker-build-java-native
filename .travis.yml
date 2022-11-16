@@ -1,4 +1,4 @@
-dist: jammy
+dist: focal
 
 git:
   depth: false
@@ -8,12 +8,16 @@ language: generic
 
 services:
   - docker
+  
+arch:
+  - amd64
+  - arm64  
 
 before_install:
   - docker login -u="moussavdb" -p="$DOCKER_PASSWORD";
-  - docker build -t moussavdb/build-java-native:latest .
+  - docker build -t moussavdb/build-java-$TRAVIS_CPU_ARCH:latest --build-arg CI_ARCH=$TRAVIS_CPU_ARCH .
 script:
-  - docker images moussavdb/build-java-native
+  - docker images moussavdb/build-java-native-$TRAVIS_CPU_ARCH
   
 after_success:
-  - docker push moussavdb/build-java-native:latest;
+  - docker push moussavdb/build-java-native-$TRAVIS_CPU_ARCH:latest;
