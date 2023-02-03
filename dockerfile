@@ -1,5 +1,4 @@
-ARG CI_ARCH
-FROM moussavdb/build-java-${CI_ARCH}:17
+FROM moussavdb/build-java:17
 
 LABEL maintainer="Grégory Van den Borre vandenborre.gregory@hotmail.fr"
 
