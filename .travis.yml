@@ -1,23 +1,21 @@
-dist: focal
-
+arch:
+  - amd64
+os: linux
+dist: jammy
 git:
   depth: false
 
-os: linux
-language: generic
+language: bash
 
 services:
   - docker
-  
-arch:
-  - amd64
-  - arm64  
 
 before_install:
-  - docker login -u="moussavdb" -p="$DOCKER_PASSWORD";
-  - docker build -t moussavdb/build-java-native-$TRAVIS_CPU_ARCH:latest --build-arg CI_ARCH=$TRAVIS_CPU_ARCH .
-script:
-  - docker images moussavdb/build-java-native-$TRAVIS_CPU_ARCH
+  - mkdir -vp ~/.docker/cli-plugins/
+  - curl --silent -L "https://github.com/docker/buildx/releases/download/v0.10.2/buildx-v0.10.2.linux-amd64" > ~/.docker/cli-plugins/docker-buildx
+  - chmod a+x ~/.docker/cli-plugins/docker-buildx
   
-after_success:
-  - docker push moussavdb/build-java-native-$TRAVIS_CPU_ARCH:latest;
+script:
+  - docker login -u="moussavdb" -p="$DOCKER_PASSWORD";
+  - docker buildx create --use
+  - docker buildx build --push --platform linux/arm64/v8,linux/amd64 --tag build-java-native:latest .
