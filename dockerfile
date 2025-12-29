@@ -1,4 +1,4 @@
-FROM moussavdb/build-java:21
+FROM moussavdb/build-java:lts
 
 LABEL maintainer="Grégory Van den Borre vandenborre.gregory@hotmail.fr"
 
